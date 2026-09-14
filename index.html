@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12-Month Accounting &amp; Finance Career Path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --blue:#1B4B91;
+    --blue-light:#3E6FB0;
+    --bg:#F4F6F8;
+    --tint:#EAF1FB;
+    --white:#FFFFFF;
+    --grey:#5B6B7C;
+    --grey-light:#B9C2CC;
+    --gold:#C9A227;
+    --green:#2E8B57;
+    --border:#DCE3EA;
+    --radius:14px;
+    --shadow: 0 1px 2px rgba(11,31,58,0.06), 0 8px 24px -12px rgba(11,31,58,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--navy);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:80px;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;}
+  a{color:inherit;}
+
+  /* ===== HEADER ===== */
+  .hero{
+    background:linear-gradient(160deg, var(--navy) 0%, #0F2A52 55%, var(--blue) 130%);
+    color:var(--white);
+    padding:44px 20px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size:42px 42px;
+    pointer-events:none;
+  }
+  .hero-inner{max-width:1120px;margin:0 auto;position:relative;}
+  .hero-eyebrow{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; color:#9FB6D9; margin-bottom:14px; letter-spacing:0.01em;
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  h1.hero-title{
+    font-size:clamp(28px,4.2vw,44px);
+    font-weight:600;
+    line-height:1.08;
+    margin:0 0 10px;
+    max-width:720px;
+  }
+  .hero-sub{
+    color:#C7D5E8; font-size:15.5px; max-width:560px; line-height:1.55; margin:0 0 30px;
+  }
+
+  .progress-block{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;
+    padding:22px 24px;
+    backdrop-filter:blur(6px);
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .progress-top .label{font-size:13px;color:#AFC2DE;text-transform:uppercase;letter-spacing:0.06em;}
+  .progress-top .pct{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--white);}
+  .progress-track{
+    height:12px; border-radius:999px; background:rgba(255,255,255,0.14); overflow:hidden; position:relative;
+  }
+  .progress-fill{
+    height:100%; border-radius:999px;
+    background:linear-gradient(90deg,#3E6FB0,#C9A227);
+    width:0%;
+    transition:width .5s ease;
+  }
+  .month-ticks{display:flex;justify-content:space-between;margin-top:6px;padding:0 1px;}
+  .month-ticks span{font-size:10px;color:#8CA3C4;width:16px;text-align:center;}
+
+  /* ===== STATS ===== */
+  .stats-row{
+    max-width:1120px;margin:-30px auto 0;padding:0 20px;
+    display:grid;grid-template-columns:repeat(6,1fr);gap:12px;position:relative;z-index:2;
+  }
+  .stat-card{
+    background:var(--white);border:1px solid var(--border);border-radius:12px;
+    padding:14px 14px 12px;box-shadow:var(--shadow);
+  }
+  .stat-card .stat-label{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
+  .stat-card .stat-value{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--navy);}
+  .stat-card select, .stat-card input[type=number]{
+    width:100%;border:none;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--navy);
+    background:transparent;padding:0;-moz-appearance:none;-webkit-appearance:none;appearance:none;
+  }
+  .stat-card input[type=number]{font-size:22px;}
+  .stat-card select:focus, .stat-card input:focus{outline:none;}
+  .stat-card.editable{cursor:pointer;}
+
+  @media (max-width:900px){ .stats-row{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:560px){ .stats-row{grid-template-columns:repeat(2,1fr);} }
+
+  /* ===== MAIN ===== */
+  main{max-width:1120px;margin:0 auto;padding:56px 20px 0;}
+
+  .path-diagram{
+    display:flex;align-items:center;gap:6px;overflow-x:auto;padding:6px 2px 22px;
+    margin-bottom:36px;border-bottom:1px solid var(--border);
+  }
+  .path-node{
+    flex:0 0 auto;background:var(--white);border:1px solid var(--border);border-radius:999px;
+    padding:7px 14px;font-size:12.5px;font-weight:500;color:var(--blue);white-space:nowrap;
+  }
+  .path-node.done{background:var(--navy);color:var(--white);border-color:var(--navy);}
+  .path-arrow{flex:0 0 auto;color:var(--grey-light);font-size:14px;}
+
+  .stage{margin-bottom:14px;}
+  .stage-head{
+    display:flex;align-items:center;gap:16px;margin-bottom:20px;
+  }
+  .stage-icon{
+    width:46px;height:46px;border-radius:12px;background:var(--navy);color:var(--white);
+    display:flex;align-items:center;justify-content:center;font-size:20px;flex:0 0 auto;
+  }
+  .stage-titles{flex:1;min-width:0;}
+  .stage-eyebrow{font-size:11.5px;color:var(--blue);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-bottom:2px;}
+  .stage-titles h2{font-size:21px;margin:0;font-weight:600;}
+  .stage-progress-wrap{flex:0 0 auto;text-align:right;min-width:96px;}
+  .stage-progress-wrap .pct{font-family:'Fraunces',serif;font-weight:600;font-size:17px;}
+  .stage-progress-track{width:96px;height:6px;border-radius:999px;background:var(--border);margin-top:4px;overflow:hidden;}
+  .stage-progress-fill{height:100%;background:var(--blue);border-radius:999px;width:0%;transition:width .4s ease;}
+
+  .months-grid{display:grid;gap:16px;margin-bottom:34px;}
+  .months-grid.cols-2{grid-template-columns:1fr 1fr;}
+  .months-grid.cols-1{grid-template-columns:1fr;}
+  @media (max-width:760px){ .months-grid.cols-2{grid-template-columns:1fr;} }
+
+  .stage-connector{
+    display:flex;justify-content:center;color:var(--grey-light);font-size:20px;margin:-14px 0 24px;
+  }
+
+  /* month card */
+  details.month-card{
+    background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  details.month-card > summary{
+    list-style:none;cursor:pointer;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  details.month-card > summary::-webkit-details-marker{display:none;}
+  .month-badge{
+    flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--tint);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:15px;
+  }
+  .month-card[open] .month-badge{background:var(--blue);color:var(--white);}
+  .month-main{flex:1;min-width:0;}
+  .month-row1{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .month-obj{font-weight:600;font-size:15px;margin:0 0 3px;}
+  .month-num-label{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px;}
+  .status-pill{
+    flex:0 0 auto;font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap;
+    background:var(--bg);color:var(--grey);border:1px solid var(--border);
+  }
+  .status-pill.in-progress{background:#FFF6E0;color:#93720A;border-color:#F0DFA0;}
+  .status-pill.completed{background:#E7F4EC;color:var(--green);border-color:#BEE3C9;}
+  .month-mini-track{height:5px;border-radius:999px;background:var(--bg);margin-top:10px;overflow:hidden;}
+  .month-mini-fill{height:100%;background:var(--blue);border-radius:999px;width:0%;transition:width .4s ease;}
+  .chevron{flex:0 0 auto;margin-top:4px;color:var(--grey-light);transition:transform .2s ease;}
+  details.month-card[open] .chevron{transform:rotate(180deg);}
+
+  .month-body{padding:2px 20px 22px 20px;border-top:1px solid var(--border);}
+  .month-body-inner{padding-top:16px;display:grid;gap:18px;grid-template-columns:1.15fr 0.85fr;}
+  @media (max-width:640px){ .month-body-inner{grid-template-columns:1fr;} }
+
+  .field-label{
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--blue);
+    display:flex;align-items:center;gap:6px;margin-bottom:9px;
+  }
+  ul.checklist{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:7px;}
+  ul.checklist li label{
+    display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:#2A3C52;cursor:pointer;line-height:1.4;
+  }
+  ul.checklist input[type=checkbox]{
+    margin-top:2px;width:16px;height:16px;flex:0 0 auto;accent-color:var(--blue);cursor:pointer;
+  }
+  ul.checklist input[type=checkbox]:checked ~ span{color:var(--grey);text-decoration:line-through;text-decoration-color:var(--grey-light);}
+
+  .project-box{
+    background:var(--tint);border:1px solid #D3E2F5;border-radius:10px;padding:12px 14px;margin-bottom:14px;
+  }
+  .project-box label{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;font-weight:500;color:var(--navy);cursor:pointer;}
+  .project-box input[type=checkbox]{margin-top:2px;width:16px;height:16px;accent-color:var(--blue);flex:0 0 auto;cursor:pointer;}
+
+  .info-line{font-size:13px;color:var(--grey);line-height:1.55;margin:0 0 12px;}
+  .info-line b{color:var(--navy);font-weight:600;}
+  .job-flag{
+    display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#93720A;
+    background:#FFF6E0;border:1px solid #F0DFA0;padding:4px 9px;border-radius:999px;margin-bottom:12px;
+  }
+
+  /* portfolio summary in stage 7 */
+  .portfolio-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .portfolio-list li{
+    display:flex;align-items:center;gap:10px;font-size:13.5px;padding:9px 12px;border-radius:9px;background:var(--bg);border:1px solid var(--border);
+  }
+  .portfolio-list li .tick{
+    width:20px;height:20px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+    font-size:12px;background:var(--white);border:2px solid var(--grey-light);color:transparent;
+  }
+  .portfolio-list li.done{background:#E7F4EC;border-color:#BEE3C9;}
+  .portfolio-list li.done .tick{background:var(--green);border-color:var(--green);color:var(--white);}
+  .portfolio-list li.done span{color:var(--green);font-weight:600;}
+
+  footer{max-width:1120px;margin:40px auto 0;padding:20px 20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px solid var(--border);}
+  footer .foot-note{font-size:12px;color:var(--grey-light);}
+  .reset-btn{
+    background:none;border:1px solid var(--border);color:var(--grey);font-size:12.5px;padding:7px 14px;
+    border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .reset-btn:hover{border-color:#D98A8A;color:#B3453D;}
+
+  .loading-note{max-width:1120px;margin:0 auto;padding:10px 20px 0;font-size:12px;color:var(--grey-light);}
+
+.skip-link{position:fixed;left:12px;top:-60px;background:#fff;color:#0B1F3A;padding:10px 14px;border-radius:8px;z-index:9999}
+.skip-link:focus{top:12px}
+.site-nav{position:sticky;top:0;z-index:50;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:10px 16px;background:rgba(11,31,58,.97);box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.site-nav a{color:#fff;text-decoration:none;font-size:12px;font-weight:700}
+.v2-section{margin:44px 0;padding:26px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.v2-head{margin-bottom:18px}.v2-head h2{margin:0;font-size:25px}.v2-head p{color:var(--grey);font-size:13px;line-height:1.55}
+.resource-grid,.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.resource-card,.tool-card{padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg)}
+.resource-card h3,.tool-card h3{margin:0 0 6px;font-size:16px}
+.resource-card p,.tool-card p{margin:0 0 12px;color:var(--grey);font-size:12.5px;line-height:1.5}
+.resource-meta{font-size:10.5px;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:8px}
+.v2-btn{display:inline-block;text-decoration:none;background:var(--navy);color:#fff;padding:8px 11px;border-radius:8px;font-size:12px;font-weight:700;border:0;cursor:pointer}
+.v2-btn.secondary{background:#fff;color:var(--blue);border:1px solid var(--border)}
+.review-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.review-form .full{grid-column:1/-1}
+.review-form label{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:6px}
+.review-form input,.review-form textarea,.review-form select{width:100%;border:1px solid var(--border);border-radius:9px;padding:10px;font:inherit;background:#fff}
+.review-form textarea{min-height:90px;resize:vertical}
+.review-actions{display:flex;gap:10px;flex-wrap:wrap}
+.review-list{margin-top:18px;display:grid;gap:10px}
+.review-item{padding:13px;border:1px solid var(--border);border-radius:10px;background:var(--bg)}
+.review-item strong{display:block;margin-bottom:4px}.review-item p{margin:4px 0;color:var(--grey);font-size:12.5px;line-height:1.45}
+.empty-note{color:var(--grey);font-size:13px}
+.security-note{margin-top:14px;padding:12px 14px;border-left:4px solid var(--gold);background:#FFF9E8;color:#5c4c12;font-size:12.5px;line-height:1.5}
+@media(max-width:850px){.resource-grid,.tool-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.resource-grid,.tool-grid,.review-form{grid-template-columns:1fr}.review-form .full{grid-column:auto}.v2-section{padding:18px}}
+</style>
+
+<meta name="description" content="Nasman Finance Hub — a practical 12-month Accounting & Finance career development dashboard covering accounting, Excel, Nigerian tax, IFRS, audit, banking, fintech, ERP and ICAN readiness.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0B1F3A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nasman Finance Hub | 12-Month Accounting & Finance Career Path">
+<meta property="og:description" content="A practical 12-month Accounting & Finance career dashboard with skills, projects and progress tracking.">
+<meta property="og:url" content="https://YOURDOMAIN.com/">
+<meta property="og:image" content="https://YOURDOMAIN.com/assets/og-cover.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://YOURDOMAIN.com/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body><a class="skip-link" href="#main-content">Skip to main content</a><nav class="site-nav" aria-label="Primary navigation"><a href="#main-content">Roadmap</a><a href="#resources">Resources</a><a href="#reviews">Monthly Review</a><a href="#career-tools">Career Tools</a></nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span> ACCOUNTING &amp; FINANCE &nbsp;·&nbsp; 12-MONTH CAREER DASHBOARD</div>
+    <h1 class="hero-title">From B.Sc. Accounting to Finance Manager</h1>
+    <p class="hero-sub">A practical, month-by-month path through core accounting, Excel, Nigerian tax, IFRS, audit, banking &amp; fintech, ERP and ICAN readiness — with a checklist for every step.</p>
+    <div class="progress-block">
+      <div class="progress-top">
+        <span class="label">Overall Progress · 12 Months</span>
+        <span class="pct" id="overallPct">0%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="overallFill"></div></div>
+      <div class="month-ticks" id="monthTicks"></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-label">Skills acquired</div><div class="stat-value" id="statSkills">0/0</div></div>
+  <div class="stat-card"><div class="stat-label">Projects completed</div><div class="stat-value" id="statProjects">0/6</div></div>
+  <div class="stat-card editable"><div class="stat-label">🎓 ICAN status</div>
+    <select id="statCert">
+      <option>Not started</option>
+      <option>Registered</option>
+      <option>Foundation</option>
+      <option>Skills level</option>
+      <option>Professional level</option>
+    </select>
+  </div>
+  <div class="stat-card editable"><div class="stat-label">💼 Jobs applied for</div>
+    <input type="number" min="0" id="statJobs" value="0">
+  </div>
+  <div class="stat-card editable"><div class="stat-label">🗣 Interviews attended</div>
+    <input type="number" min="0" id="statInterviews" value="0">
+  </div>
+  <div class="stat-card editable"><div class="stat-label">Current career level</div>
+    <select id="statLevel">
+      <option>Student</option>
+      <option>Intern / Trainee</option>
+      <option>Accounts Assistant</option>
+      <option>Junior Accountant</option>
+      <option>Accountant</option>
+      <option>Senior Accountant</option>
+      <option>Finance Manager</option>
+    </select>
+  </div>
+</div>
+
+<div class="loading-note" id="loadingNote"></div>
+
+<main id="main-content">
+  <div class="path-diagram" id="pathDiagram"></div>
+  <div id="stagesRoot"></div>
+</main>
+
+
+<section class="v2-section" id="resources"><div class="v2-head"><h2>Free Learning Resources</h2><p>Resources mapped to the roadmap. Availability and free-access terms can change, so confirm current terms on the linked site.</p></div><div class="resource-grid"><article class="resource-card"><div class="resource-meta">Months 1–2 · Accounting Foundation</div><h3>OpenLearn</h3><p>Free accounting learning materials.</p><a class="v2-btn" href="https://www.open.edu/openlearn/money-business/fundamentals-accounting" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 3–4 · Excel</div><h3>Microsoft Support</h3><p>Official Excel help and learning resources.</p><a class="v2-btn" href="https://support.microsoft.com/en-us/excel" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 3–4 · Tax</div><h3>Nigeria Revenue Service</h3><p>Official Nigerian taxpayer self-service portal.</p><a class="v2-btn" href="https://selfservice.nrs.gov.ng/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 5–6 · IFRS</div><h3>IFRS Foundation</h3><p>Official IFRS Standards resources.</p><a class="v2-btn" href="https://www.ifrs.org/issued-standards/list-of-standards/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 5–6 · ICAN</div><h3>ICAN</h3><p>Official student and qualification information.</p><a class="v2-btn" href="https://icanig.org/ican/students/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 6–7 · Accounting software</div><h3>QuickBooks</h3><p>Accounting software learning resources.</p><a class="v2-btn" href="https://quickbooks.intuit.com/accounting/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 6–7 · Accounting software</div><h3>Sage</h3><p>Accounting software learning resources.</p><a class="v2-btn" href="https://www.sage.com/en-gb/products/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Months 10–11 · ERP / SAP</div><h3>SAP Learning</h3><p>SAP ERP and business-process learning resources.</p><a class="v2-btn" href="https://learning.sap.com/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Month 9 · Banking / markets</div><h3>NGX</h3><p>Official Nigerian Exchange information.</p><a class="v2-btn" href="https://ngxgroup.com/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article><article class="resource-card"><div class="resource-meta">Month 9 · Banking / regulation</div><h3>CBN</h3><p>Official Central Bank publications and information.</p><a class="v2-btn" href="https://www.cbn.gov.ng/" target="_blank" rel="noopener noreferrer">Open resource ↗</a></article></div><div class="security-note">External resources open securely in a new tab. No API keys, passwords or private tokens are stored in this frontend.</div></section>
+<section class="v2-section" id="reviews"><div class="v2-head"><h2>Monthly Review</h2><p>Record what you learned, what you produced and what you need to improve. Reviews are saved locally in your browser.</p></div>
+<form id="reviewForm" class="review-form">
+<div><label for="reviewMonth">Month</label><select id="reviewMonth"></select></div>
+<div><label for="reviewRating">Self-rating</label><select id="reviewRating"><option>Needs work</option><option>Developing</option><option>Good</option><option>Strong</option></select></div>
+<div class="full"><label for="reviewLearned">What did I learn?</label><textarea id="reviewLearned" required></textarea></div>
+<div><label for="reviewEvidence">What did I build/prove?</label><textarea id="reviewEvidence" required></textarea></div>
+<div><label for="reviewImprove">What should I improve next?</label><textarea id="reviewImprove"></textarea></div>
+<div class="full review-actions"><button class="v2-btn" type="submit">Save monthly review</button><button class="v2-btn secondary" type="button" id="clearReviews">Clear reviews</button></div>
+</form><div id="reviewList" class="review-list"><div class="empty-note">No monthly reviews saved yet.</div></div></section>
+<section class="v2-section" id="career-tools"><div class="v2-head"><h2>Career Tools</h2><p>Supporting career infrastructure for your 12-month roadmap.</p></div><div class="tool-grid">
+<article class="tool-card"><h3>CV</h3><p><strong>Finance-focused CV</strong><br>Use evidence-based bullets for accounting, Excel, tax, IFRS and projects.</p></article>
+<article class="tool-card"><h3>LinkedIn</h3><p><strong>Professional profile</strong><br>Use your completed projects as evidence of skills.</p></article>
+<article class="tool-card"><h3>Portfolio</h3><p><strong>Show your work</strong><br>Organize models, tax work, IFRS work and reconciliation projects.</p></article>
+<article class="tool-card"><h3>ICAN</h3><p><strong>Qualification tracking</strong><br>Use official ICAN information for current registration and exams.</p></article>
+<article class="tool-card"><h3>Domain</h3><p><strong>YOURDOMAIN.com</strong><br>Replace the placeholder after purchasing your custom domain.</p></article>
+</div></section>
+<footer>
+  <span class="foot-note">Progress is saved automatically as you check items off.</span>
+  <button class="reset-btn" id="resetBtn">Reset all progress</button>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- DATA ---------------- */
+  var STAGES = [
+    {
+      key:"s1", icon:"📚", eyebrow:"Stage 1 · Months 1–2", title:"Accounting Foundation",
+      months:[
+        {
+          n:1, obj:"Core accounting cycle: from source document to trial balance",
+          skills:["Full accounting cycle","Journals and ledgers","Trial balance","Adjusting entries","Bank reconciliation","Accounts payable and receivable"],
+          project:{key:"accounting-cycle-m1", label:"Set up a fictional Nigerian company and begin processing 3 months of transactions through journals, ledgers and trial balance"},
+          evidence:"Completed journals, ledgers and a balanced trial balance for the fictional company.",
+          relevance:"Builds the bookkeeping fluency every accounting role assumes you already have."
+        },
+        {
+          n:2, obj:"Adjustments, closing and financial statements",
+          skills:["Fixed assets","Accruals and prepayments","Inventory","Payroll","Month-end closing","Financial statements"],
+          project:{key:"accounting-cycle", label:"Complete the 3-month transaction cycle: adjustments, month-end close and full financial statements"},
+          evidence:"A complete accounting-cycle project — journals through to Income Statement and Statement of Financial Position.",
+          relevance:"Portfolio project #1 — proof you can take a business from raw transactions to finished accounts."
+        }
+      ]
+    },
+    {
+      key:"s2", icon:"💻", eyebrow:"Stage 2 · Months 3–4", title:"Excel &amp; Taxation",
+      months:[
+        {
+          n:3, obj:"Advanced Excel for financial reporting and dashboards",
+          skills:["SUMIFS / COUNTIFS","XLOOKUP","INDEX / MATCH","IF / IFS","IFERROR","PivotTables & PivotCharts","Conditional formatting","Data validation","Power Query","Financial modelling","Dashboards"],
+          project:{key:"excel-model", label:"Build an integrated workbook: General Ledger, Trial Balance, Income Statement, Statement of Financial Position, Cash Flow Statement, Expense Analysis and a Management Dashboard"},
+          evidence:"A single interlinked Excel workbook driven by formulas, pivots and a live dashboard.",
+          relevance:"Portfolio project #2 — Excel fluency is checked in almost every finance interview."
+        },
+        {
+          n:4, obj:"Nigerian taxation essentials",
+          skills:["VAT","WHT","PAYE","CIT","Tax calculations","Tax adjustments","Tax reconciliation","Payroll taxation"],
+          project:{key:"tax-model", label:"Build an Excel tax model calculating VAT, WHT, PAYE and CIT for a fictional Nigerian company"},
+          evidence:"A working tax computation model with a reconciliation schedule.",
+          relevance:"Portfolio project #3 — direct preparation for Tax Associate and compliance-facing roles."
+        }
+      ]
+    },
+    {
+      key:"s3", icon:"📊", eyebrow:"Stage 3 · Months 5–6", title:"IFRS &amp; Accounting Software",
+      months:[
+        {
+          n:5, obj:"IFRS: recognition, measurement, entries, presentation, disclosure",
+          skills:["IAS 1 — Presentation of Financial Statements","IAS 2 — Inventories","IAS 7 — Statement of Cash Flows","IAS 8 — Accounting Policies, Estimates & Errors","IAS 10 — Events after the Reporting Period","IAS 12 — Income Taxes","IAS 16 — Property, Plant & Equipment","IAS 36 — Impairment of Assets","IFRS 9 — Financial Instruments","IFRS 15 — Revenue from Contracts with Customers","IFRS 16 — Leases"],
+          project:{key:"ifrs", label:"IFRS financial reporting project — apply the standards above to a set of company transactions and disclosures"},
+          evidence:"Standard-by-standard notes and worked entries covering recognition through disclosure.",
+          relevance:"Portfolio project #5 — IFRS knowledge underpins financial reporting and audit roles."
+        },
+        {
+          n:6, obj:"Hands-on accounting software",
+          skills:["QuickBooks","Sage","Basic ERP concepts","Company setup & chart of accounts","Customers and suppliers","Invoices and bills","Payments & journal entries","Bank reconciliation in software","VAT and payroll in software","Financial reports & month-end closing"],
+          project:{key:"software", label:"QuickBooks / Sage accounting project — set up the earlier fictional company inside the software and produce its financial reports"},
+          evidence:"A software-generated set of financial reports for the fictional company.",
+          relevance:"Portfolio project #4 — most junior accounting roles expect QuickBooks or Sage on day one."
+        }
+      ]
+    },
+    {
+      key:"s4", icon:"🔍", eyebrow:"Stage 4 · Months 7–8", title:"Audit &amp; Professional Practice",
+      months:[
+        {
+          n:7, obj:"Audit evidence and internal controls",
+          skills:["Audit evidence","Internal controls","Vouching","Bank confirmation","Receivables confirmation","Inventory procedures"],
+          project:null,
+          jobFlag:"Career targets open — start preparing applications",
+          jobs:["Accounts Assistant","Junior Accountant","Finance Intern","Graduate Trainee"],
+          evidence:"Working papers demonstrating each audit procedure practised.",
+          relevance:"Direct preparation for Audit Associate interviews and control-testing tasks."
+        },
+        {
+          n:8, obj:"Audit execution and reporting",
+          skills:["Fixed asset verification","Audit sampling","Working papers","Audit adjustments","Management letters","Fraud risks","Reconciliations"],
+          project:null,
+          jobFlag:"Start applying — roles open this stage",
+          jobs:["Audit Associate","Tax Associate","Finance Operations Analyst"],
+          evidence:"A completed set of audit working papers and a draft management letter.",
+          relevance:"Rounds out audit exposure; this is where active job applications should begin."
+        }
+      ]
+    },
+    {
+      key:"s5", icon:"🏦", eyebrow:"Stage 5 · Month 9", title:"Banking &amp; Fintech Specialisation",
+      months:[
+        {
+          n:9, obj:"Banking, payments and fintech accounting",
+          skills:["Financial instruments","Loans and advances","Interest income","Impairment","Expected Credit Loss (IFRS 9)","Deposits & treasury","Regulatory reporting","Bank reconciliation","Payment processing","Transaction reconciliation & settlement","Merchant transactions & fees","Chargebacks","Revenue recognition (fintech)","Customer balances & payment gateways"],
+          project:{key:"banking-fintech", label:"Create a fictional payment company: build a transaction report, settlement reconciliation, revenue calculation, bank reconciliation and monthly financial report"},
+          evidence:"Portfolio project #6 — a full banking/fintech reconciliation package.",
+          relevance:"Positions you specifically for banking, fintech and payments finance roles."
+        }
+      ]
+    },
+    {
+      key:"s6", icon:"⚙️", eyebrow:"Stage 6 · Months 10–11", title:"ERP/SAP &amp; Financial Modelling",
+      months:[
+        {
+          n:10, obj:"How finance operates inside an ERP",
+          skills:["General Ledger (SAP)","Accounts Payable","Accounts Receivable","Asset Accounting","Cost Centres","Profit Centres","Purchase-to-Pay","Order-to-Cash","Month-end closing in ERP"],
+          project:null,
+          evidence:"Notes/screens mapping each finance process to its SAP module.",
+          relevance:"Goal: understand how finance departments operate inside an enterprise system — expected at most corporates."
+        },
+        {
+          n:11, obj:"Financial analysis and modelling",
+          skills:["Ratio analysis","Profitability analysis","Liquidity analysis","Working capital","Cash-flow analysis","Budgeting","Forecasting","Variance analysis","Financial modelling"],
+          project:{key:"fin-model", label:"Build an Excel financial model that analyses company performance, identifies key drivers and gives management recommendations"},
+          evidence:"A financial model with ratio analysis, forecasts and a recommendations summary.",
+          relevance:"Core skill for corporate finance, FP&A and financial-reporting-accountant roles."
+        }
+      ]
+    },
+    {
+      key:"s7", icon:"🎓", eyebrow:"Stage 7 · Month 12", title:"Professional Qualification &amp; Job Readiness",
+      months:[
+        {
+          n:12, obj:"ICAN journey and interview readiness",
+          skills:["ICAN qualification journey","CV improvement","Interview preparation","Technical accounting questions","Tax interview questions","Excel tests","Financial reporting questions","Banking/fintech interview preparation"],
+          project:null,
+          evidence:"A polished CV, a completed portfolio, and interview practice notes.",
+          relevance:"The bridge from training to a qualified accounting/finance role.",
+          portfolio:true
+        }
+      ]
+    }
+  ];
+
+  var PORTFOLIO_ITEMS = [
+    {key:"accounting-cycle", label:"Complete accounting-cycle project"},
+    {key:"excel-model", label:"Advanced Excel financial reporting model"},
+    {key:"tax-model", label:"Nigerian VAT/WHT/PAYE/CIT tax model"},
+    {key:"software", label:"QuickBooks/Sage accounting project"},
+    {key:"ifrs", label:"IFRS financial reporting project"},
+    {key:"banking-fintech", label:"Banking/fintech reconciliation project"}
+  ];
+
+  var CAREER_LADDER = ["B.Sc. Accounting","Practical Accounting","Advanced Excel","Nigerian Taxation","IFRS","QuickBooks/Sage","ERP/SAP","Banking/Fintech","ICAN","Junior Role","Accountant","Senior Accountant","Finance Manager"];
+
+  /* ---------------- STORAGE (in-memory fallback + window.storage) ---------------- */
+  var state = {}; // key -> value, mirrors storage
+  var storageOK = !!(window.storage && window.storage.get && window.storage.set);
+
+  function skillKey(m,i){ return "skill:"+m+":"+i; }
+  function projKey(k){ return "project:"+k; }
+
+  async function loadAll(){
+    var keys = [];
+    STAGES.forEach(function(st){
+      st.months.forEach(function(m){
+        m.skills.forEach(function(s,i){ keys.push(skillKey(m.n,i)); });
+        if(m.project) keys.push(projKey(m.project.key));
+      });
+    });
+    keys.push("meta:cert","meta:jobs","meta:interviews","meta:level");
+
+    if(storageOK){
+      try{
+        var results = await Promise.all(keys.map(function(k){
+          return window.storage.get(k, false).catch(function(){ return null; });
+        }));
+        keys.forEach(function(k, idx){
+          var r = results[idx];
+          if(r && r.value !== undefined) state[k] = r.value;
+        });
+      }catch(e){ /* fall back to defaults silently */ }
+    }
+  }
+
+  function saveKey(key, value){
+    state[key] = value;
+    if(storageOK){
+      window.storage.set(key, value, false).catch(function(){ /* best effort */ });
+    }
+  }
+
+  /* ---------------- RENDER ---------------- */
+  var stagesRoot = document.getElementById("stagesRoot");
+  var pathDiagram = document.getElementById("pathDiagram");
+
+  function el(tag, cls, html){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  function monthProgress(m){
+    var total = m.skills.length + (m.project ? 1 : 0);
+    var done = 0;
+    m.skills.forEach(function(s,i){ if(state[skillKey(m.n,i)]) done++; });
+    if(m.project && state[projKey(m.project.key)]) done++;
+    return {done:done, total:total, pct: total ? Math.round(done/total*100) : 0};
+  }
+
+  function buildMonthCard(m){
+    var card = document.createElement("details");
+    card.className = "month-card";
+    card.id = "month-"+m.n;
+
+    var summary = el("summary");
+    var badge = el("div","month-badge","M"+m.n);
+    var mainWrap = el("div","month-main");
+    var row1 = el("div","month-row1");
+    var titleWrap = el("div");
+    titleWrap.appendChild(el("div","month-num-label","Month "+m.n));
+    titleWrap.appendChild(el("p","month-obj",m.obj));
+    var pill = el("span","status-pill","Not started");
+    row1.appendChild(titleWrap);
+    row1.appendChild(pill);
+    var track = el("div","month-mini-track");
+    var fill = el("div","month-mini-fill");
+    track.appendChild(fill);
+    mainWrap.appendChild(row1);
+    mainWrap.appendChild(track);
+    var chev = el("div","chevron","▾");
+
+    summary.appendChild(badge);
+    summary.appendChild(mainWrap);
+    summary.appendChild(chev);
+    card.appendChild(summary);
+
+    var body = el("div","month-body");
+    var inner = el("div","month-body-inner");
+
+    // left column
+    var left = el("div");
+    if(m.jobFlag){
+      left.appendChild(el("div","job-flag","💼 "+m.jobFlag));
+    }
+    left.appendChild(el("div","field-label","📚 Skills to learn"));
+    var ul = el("ul","checklist");
+    m.skills.forEach(function(s,i){
+      var li = document.createElement("li");
+      var label = document.createElement("label");
+      var cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = !!state[skillKey(m.n,i)];
+      cb.addEventListener("change", function(){
+        saveKey(skillKey(m.n,i), cb.checked);
+        refreshAll();
+      });
+      var span = document.createElement("span");
+      span.textContent = s;
+      label.appendChild(cb);
+      label.appendChild(span);
+      li.appendChild(label);
+      ul.appendChild(li);
+    });
+    left.appendChild(ul);
+
+    if(m.jobs && m.jobs.length){
+      left.appendChild(el("div","field-label","💼 Roles to target"));
+      var jul = el("ul","checklist");
+      m.jobs.forEach(function(j,i){
+        var li = document.createElement("li");
+        var label = document.createElement("label");
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        var jk = "job:"+m.n+":"+i;
+        cb.checked = !!state[jk];
+        cb.addEventListener("change", function(){ saveKey(jk, cb.checked); });
+        var span = document.createElement("span");
+        span.textContent = j;
+        label.appendChild(cb); label.appendChild(span);
+        li.appendChild(label);
+        jul.appendChild(li);
+      });
+      left.appendChild(jul);
+    }
+
+    if(m.project){
+      var pbox = el("div","project-box");
+      var plabel = document.createElement("label");
+      var pcb = document.createElement("input");
+      pcb.type = "checkbox";
+      pcb.checked = !!state[projKey(m.project.key)];
+      pcb.addEventListener("change", function(){
+        saveKey(projKey(m.project.key), pcb.checked);
+        refreshAll();
+      });
+      var pspan = document.createElement("span");
+      pspan.textContent = "🧾 Practical project: " + m.project.label;
+      plabel.appendChild(pcb); plabel.appendChild(pspan);
+      pbox.appendChild(plabel);
+      left.appendChild(pbox);
+    }
+
+    // right column
+    var right = el("div");
+    right.appendChild(el("div","field-label","✅ Evidence of completion"));
+    right.appendChild(el("p","info-line",m.evidence));
+    right.appendChild(el("div","field-label","🎯 Career relevance"));
+    right.appendChild(el("p","info-line",m.relevance));
+
+    if(m.portfolio){
+      right.appendChild(el("div","field-label","💼 12-Month Portfolio Target"));
+      var plist = el("ul","portfolio-list");
+      PORTFOLIO_ITEMS.forEach(function(p){
+        var li = el("li");
+        li.appendChild(el("span","tick","✓"));
+        li.appendChild(el("span",null,p.label));
+        li.dataset.pkey = p.key;
+        plist.appendChild(li);
+      });
+      right.appendChild(plist);
+    }
+
+    inner.appendChild(left);
+    inner.appendChild(right);
+    body.appendChild(inner);
+    card.appendChild(body);
+
+    card._refresh = function(){
+      var pr = monthProgress(m);
+      fill.style.width = pr.pct + "%";
+      pill.classList.remove("in-progress","completed");
+      if(pr.pct === 0){ pill.textContent = "Not started"; }
+      else if(pr.pct === 100){ pill.textContent = "Completed"; pill.classList.add("completed"); }
+      else { pill.textContent = "In progress · " + pr.pct + "%"; pill.classList.add("in-progress"); }
+
+      if(m.portfolio){
+        var items = plist.querySelectorAll("li");
+        items.forEach(function(li){
+          var done = !!state[projKey(li.dataset.pkey)];
+          li.classList.toggle("done", done);
+        });
+      }
+    };
+
+    return card;
+  }
+
+  function buildStage(st){
+    var wrap = el("div","stage");
+    wrap.id = "stage-"+st.key;
+    var head = el("div","stage-head");
+    head.appendChild(el("div","stage-icon",st.icon));
+    var titles = el("div","stage-titles");
+    titles.appendChild(el("div","stage-eyebrow",st.eyebrow));
+    titles.appendChild(el("h2",null,st.title));
+    head.appendChild(titles);
+    var pw = el("div","stage-progress-wrap");
+    var pct = el("div","pct","0%");
+    var ptrack = el("div","stage-progress-track");
+    var pfill = el("div","stage-progress-fill");
+    ptrack.appendChild(pfill);
+    pw.appendChild(pct); pw.appendChild(ptrack);
+    head.appendChild(pw);
+    wrap.appendChild(head);
+
+    var grid = el("div","months-grid " + (st.months.length > 1 ? "cols-2" : "cols-1"));
+    var cards = [];
+    st.months.forEach(function(m){
+      var c = buildMonthCard(m);
+      cards.push(c);
+      grid.appendChild(c);
+    });
+    wrap.appendChild(grid);
+
+    wrap._refresh = function(){
+      cards.forEach(function(c){ c._refresh(); });
+      var done=0, total=0;
+      st.months.forEach(function(m){ var pr = monthProgress(m); done+=pr.done; total+=pr.total; });
+      var p = total ? Math.round(done/total*100) : 0;
+      pct.textContent = p+"%";
+      pfill.style.width = p+"%";
+    };
+    return wrap;
+  }
+
+  var allStageObjs = [];
+  STAGES.forEach(function(st, idx){
+    var built = buildStage(st);
+    stagesRoot.appendChild(built);
+    allStageObjs.push(built);
+    if(idx < STAGES.length - 1){
+      stagesRoot.appendChild(el("div","stage-connector","↓"));
+    }
+  });
+
+  function buildPathDiagram(){
+    pathDiagram.innerHTML = "";
+    var doneCount = getOverall().pct >= 100 ? CAREER_LADDER.length : Math.floor(getOverall().pct / 100 * CAREER_LADDER.length);
+    CAREER_LADDER.forEach(function(node, i){
+      var n = el("div","path-node", node);
+      if(i < doneCount) n.classList.add("done");
+      pathDiagram.appendChild(n);
+      if(i < CAREER_LADDER.length - 1){
+        pathDiagram.appendChild(el("div","path-arrow","→"));
+      }
+    });
+  }
+
+  function getOverall(){
+    var done=0, total=0;
+    STAGES.forEach(function(st){
+      st.months.forEach(function(m){ var pr = monthProgress(m); done+=pr.done; total+=pr.total; });
+    });
+    return {done:done, total:total, pct: total ? Math.round(done/total*100) : 0};
+  }
+
+  function buildMonthTicks(){
+    var wrap = document.getElementById("monthTicks");
+    wrap.innerHTML = "";
+    for(var i=1;i<=12;i++){
+      wrap.appendChild(el("span",null,i));
+    }
+  }
+  buildMonthTicks();
+
+  function refreshAll(){
+    allStageObjs.forEach(function(s){ s._refresh(); });
+    var o = getOverall();
+    document.getElementById("overallPct").textContent = o.pct + "%";
+    document.getElementById("overallFill").style.width = o.pct + "%";
+
+    var totalSkills = 0, doneSkills = 0, totalProj = 0, doneProj = 0;
+    STAGES.forEach(function(st){
+      st.months.forEach(function(m){
+        totalSkills += m.skills.length;
+        m.skills.forEach(function(s,i){ if(state[skillKey(m.n,i)]) doneSkills++; });
+      });
+    });
+    PORTFOLIO_ITEMS.forEach(function(p){ totalProj++; if(state[projKey(p.key)]) doneProj++; });
+    document.getElementById("statSkills").textContent = doneSkills+"/"+totalSkills;
+    document.getElementById("statProjects").textContent = doneProj+"/"+totalProj;
+
+    buildPathDiagram();
+  }
+
+  /* stat inputs */
+  function wireStat(id, key, isNumber){
+    var elm = document.getElementById(id);
+    if(state[key] !== undefined && state[key] !== null){
+      elm.value = state[key];
+    }
+    elm.addEventListener("change", function(){
+      saveKey(key, isNumber ? Number(elm.value) : elm.value);
+    });
+  }
+
+  /* reset */
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    if(!confirm("Reset all checklist progress? This can't be undone.")) return;
+    var keys = Object.keys(state);
+    keys.forEach(function(k){
+      if(k.indexOf("skill:")===0 || k.indexOf("project:")===0 || k.indexOf("job:")===0){
+        state[k] = false;
+        if(storageOK) window.storage.set(k, false, false).catch(function(){});
+      }
+    });
+    document.querySelectorAll('input[type=checkbox]').forEach(function(cb){ cb.checked = false; });
+    refreshAll();
+  });
+
+  /* ---------------- INIT ---------------- */
+  var loadingNote = document.getElementById("loadingNote");
+  loadingNote.textContent = "Loading saved progress…";
+
+  loadAll().then(function(){
+    loadingNote.textContent = "";
+    // re-check all checkboxes to reflect loaded state
+    document.querySelectorAll('.checklist input[type=checkbox]').forEach(function(cb){});
+    // rebuild card checkbox states from state object
+    document.querySelectorAll('details.month-card').forEach(function(card, idx){});
+    // Simplify: just re-render checkboxes by reading DOM back through skillKey mapping
+    STAGES.forEach(function(st){
+      st.months.forEach(function(m){
+        m.skills.forEach(function(s,i){
+          var cbs = document.querySelectorAll('#month-'+m.n+' .checklist input[type=checkbox]');
+        });
+      });
+    });
+    // Directly sync inputs
+    syncCheckboxesFromState();
+    wireStat("statCert","meta:cert", false);
+    wireStat("statJobs","meta:jobs", true);
+    wireStat("statInterviews","meta:interviews", true);
+    wireStat("statLevel","meta:level", false);
+    refreshAll();
+  });
+
+  function syncCheckboxesFromState(){
+    STAGES.forEach(function(st){
+      st.months.forEach(function(m){
+        var card = document.getElementById("month-"+m.n);
+        var checks = card.querySelectorAll(".checklist input[type=checkbox]");
+        // first m.skills.length are skills, rest (if any) are jobs
+        m.skills.forEach(function(s,i){
+          if(checks[i]) checks[i].checked = !!state[skillKey(m.n,i)];
+        });
+        if(m.jobs){
+          m.jobs.forEach(function(j,i){
+            var jc = checks[m.skills.length + i];
+            if(jc) jc.checked = !!state["job:"+m.n+":"+i];
+          });
+        }
+        if(m.project){
+          var pcb = card.querySelector(".project-box input[type=checkbox]");
+          if(pcb) pcb.checked = !!state[projKey(m.project.key)];
+        }
+      });
+    });
+  }
+
+  // initial render before load resolves (defaults)
+  refreshAll();
+
+
+  /* V2 monthly reviews: durable browser-local persistence */
+  (function(){
+    var KEY="nasman-finance-hub:reviews";
+    var sel=document.getElementById("reviewMonth"), form=document.getElementById("reviewForm"), list=document.getElementById("reviewList");
+    if(!sel || !form || !list) return;
+    for(var i=1;i<=12;i++){var o=document.createElement("option");o.value=i;o.textContent="Month "+i;sel.appendChild(o);}
+    function get(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
+    function esc(s){return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]})}
+    function render(){var a=get();list.innerHTML="";if(!a.length){list.innerHTML='<div class="empty-note">No monthly reviews saved yet.</div>';return}a.slice().reverse().forEach(function(r){var x=document.createElement("article");x.className="review-item";x.innerHTML="<strong>Month "+r.month+" · "+esc(r.rating)+"</strong><p><b>Learned:</b> "+esc(r.learned)+"</p><p><b>Built/proved:</b> "+esc(r.evidence)+"</p>"+(r.improve?"<p><b>Improve:</b> "+esc(r.improve)+"</p>":"");list.appendChild(x)})}
+    form.addEventListener("submit",function(e){e.preventDefault();var a=get();a.push({month:sel.value,rating:document.getElementById("reviewRating").value,learned:document.getElementById("reviewLearned").value.trim(),evidence:document.getElementById("reviewEvidence").value.trim(),improve:document.getElementById("reviewImprove").value.trim()});localStorage.setItem(KEY,JSON.stringify(a));form.reset();render()});
+    document.getElementById("clearReviews").addEventListener("click",function(){if(confirm("Clear all monthly reviews?")){localStorage.removeItem(KEY);render()}});
+    render();
+  })();
+
+})();
+</script>
+</body>
+</html>
